@@ -1,0 +1,29 @@
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 50px;
+  border-bottom: 2px solid #e0e0e0;
+  font-family: serif;
+}
+
+.nav-links {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.register-btn {
+  border: 1px solid #4a7c59;
+  padding: 8px 15px;
+  color: #4a7c59 !important;
+}
