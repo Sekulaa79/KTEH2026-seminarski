@@ -3,45 +3,41 @@ import CustomInput from '../components/CustomInput';
 import DestinationCard from '../components/DestinationCard';
 import { IDestination } from '../models/Destination';
 
-// Dodato vise podataka sa definisanim regionima za testiranje paginacije
 const sveDestinacije: IDestination[] = [
-  { id: '1', naziv: 'Nis', region: 'Istok', slika: 'https://picsum.photos/200/300' },
-  { id: '2', naziv: 'Prizren', region: 'Kosovo', slika: 'https://picsum.photos/200/300' },
-  { id: '3', naziv: 'Pec', region: 'Kosovo', slika: 'https://picsum.photos/200/300' },
-  { id: '4', naziv: 'Gracanica', region: 'Kosovo', slika: 'https://picsum.photos/200/300' },
-  { id: '5', naziv: 'Novi Sad', region: 'Vojvodina', slika: 'https://picsum.photos/200/300' },
-  { id: '6', naziv: 'Zlatibor', region: 'Zapad', slika: 'https://picsum.photos/200/300' },
-  { id: '7', naziv: 'Kragujevac', region: 'Sumadija', slika: 'https://picsum.photos/200/300' }
+  { id: '1', naziv: 'Nis', region: 'Istok', slika: 'https://picsum.photos/280/180?random=1' },
+  { id: '2', naziv: 'Prizren', region: 'Kosovo', slika: 'https://picsum.photos/280/180?random=2' },
+  { id: '3', naziv: 'Pec', region: 'Kosovo', slika: 'https://picsum.photos/280/180?random=3' },
+  { id: '4', naziv: 'Gracanica', region: 'Kosovo', slika: 'https://picsum.photos/280/180?random=4' },
+  { id: '5', naziv: 'Novi Sad', region: 'Vojvodina', slika: 'https://picsum.photos/280/180?random=5' },
+  { id: '6', naziv: 'Zlatibor', region: 'Zapad', slika: 'https://picsum.photos/280/180?random=6' },
+  { id: '7', naziv: 'Kragujevac', region: 'Sumadija', slika: 'https://picsum.photos/280/180?random=7' }
 ];
 
 const Explore: React.FC = () => {
   const [searchTekst, setSearchTekst] = useState<string>('');
   const [filtriraneDestinacije, setFiltriraneDestinacije] = useState<IDestination[]>(sveDestinacije);
   
-  // State-ovi za paginaciju
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const itemsPerPage = 4; // Koliko kartica zelimo po stranici
+  const itemsPerPage = 4;
 
-  // Hook za filtriranje po REGIONU
   useEffect(() => {
     const filtrirano = sveDestinacije.filter(dest => 
       dest.region?.toLowerCase().includes(searchTekst.toLowerCase())
     );
     setFiltriraneDestinacije(filtrirano);
-    setCurrentPage(1); // Uvek vrati na prvu stranu kada korisnik promeni filter!
+    setCurrentPage(1); 
   }, [searchTekst]);
 
-  // Logika za izracunavanje sta se prikazuje na trenutnoj stranici
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filtriraneDestinacije.slice(indexOfFirstItem, indexOfLastItem);
   
-  // Racunanje ukupnog broja stranica
   const totalPages = Math.ceil(filtriraneDestinacije.length / itemsPerPage);
 
   return (
-    <div style={{ padding: '40px' }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '50px', marginLeft: '50px' }}>
+    <div style={{ padding: '40px', minHeight: '80vh', display: 'flex', flexDirection: 'column' }}>
+      
+      <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '80px', marginLeft: '50px' }}>
         <h2 style={{ fontFamily: 'serif', borderBottom: '2px solid #2d6a4f', paddingBottom: '5px' }}>Filteri</h2>
         
         <CustomInput 
@@ -53,36 +49,35 @@ const Explore: React.FC = () => {
         <CustomInput placeholder="Cena" />
       </div>
 
-      {/* Sklonjen maxWidth i stavljen align-items na flex-start da idu normalno s leva na desno */}
       <div style={{ 
         display: 'flex', 
         gap: '30px', 
         flexWrap: 'wrap',
-        padding: '0 50px' 
+        padding: '0 50px',
+        flexGrow: 1,
+        alignItems: 'flex-start' /* OVO SPRECAVA RAZVLACENJE */
       }}>
+        
         {currentItems.map(dest => (
           <DestinationCard key={dest.id} destination={dest} />
         ))}
         {currentItems.length === 0 && <p>Nema rezultata za uneti region.</p>}
       </div>
 
-      {/* Dugmici za paginaciju se prikazuju samo ako ima vise od 1 strane */}
       {totalPages > 1 && (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '20px', marginTop: '50px' }}>
+        <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginTop: '80px', marginBottom: '20px' }}>
           <button 
             disabled={currentPage === 1}
             onClick={() => setCurrentPage(prev => prev - 1)}
-            style={{ padding: '8px 16px', backgroundColor: currentPage === 1 ? '#ccc' : '#2d6a4f', color: 'white', border: 'none', borderRadius: '5px', cursor: currentPage === 1 ? 'not-allowed' : 'pointer' }}
+            style={{ padding: '10px 25px', backgroundColor: currentPage === 1 ? '#ccc' : '#2d6a4f', color: 'white', border: 'none', borderRadius: '5px', cursor: currentPage === 1 ? 'not-allowed' : 'pointer', fontWeight: 'bold' }}
           >
             Nazad
           </button>
           
-          <span style={{ fontFamily: 'serif' }}>Strana {currentPage} od {totalPages}</span>
-          
           <button 
             disabled={currentPage === totalPages}
             onClick={() => setCurrentPage(prev => prev + 1)}
-            style={{ padding: '8px 16px', backgroundColor: currentPage === totalPages ? '#ccc' : '#2d6a4f', color: 'white', border: 'none', borderRadius: '5px', cursor: currentPage === totalPages ? 'not-allowed' : 'pointer' }}
+            style={{ padding: '10px 25px', backgroundColor: currentPage === totalPages ? '#ccc' : '#2d6a4f', color: 'white', border: 'none', borderRadius: '5px', cursor: currentPage === totalPages ? 'not-allowed' : 'pointer', fontWeight: 'bold' }}
           >
             Napred
           </button>
@@ -93,4 +88,3 @@ const Explore: React.FC = () => {
 };
 
 export default Explore;
-    
