@@ -6,6 +6,7 @@ export interface IDestination {
   region?: string;
   cena?: number;     
   trajanje?: number; 
+  opis?: string;
 }
 
 export class TripManager {

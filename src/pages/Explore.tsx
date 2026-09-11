@@ -1,24 +1,10 @@
 // src/pages/Explore.tsx
 import React, { useState, useEffect } from 'react';
+import { sveDestinacije } from '../data/mockData';
 import CustomInput from '../components/CustomInput';
 import DestinationCard from '../components/DestinationCard';
 import { IDestination } from '../models/Destination';
 
-// Dodate cene i trajanje u danima za testiranje
-const sveDestinacije: IDestination[] = [
-  { id: '1', naziv: 'Nis', region: 'Istok', cena: 50, trajanje: 3, slika: 'https://picsum.photos/280/180?random=7' },
-  { id: '2', naziv: 'Prizren', region: 'Kosovo', cena: 120, trajanje: 5, slika: 'https://picsum.photos/280/180?random=7' },
-  { id: '3', naziv: 'Pec', region: 'Kosovo', cena: 80, trajanje: 2, slika: 'https://picsum.photos/280/180?random=7' },
-  { id: '4', naziv: 'Gracanica', region: 'Kosovo', cena: 40, trajanje: 1, slika: 'https://picsum.photos/280/180?random=7' },
-  { id: '5', naziv: 'Novi Sad', region: 'Vojvodina', cena: 150, trajanje: 4, slika: 'https://picsum.photos/280/180?random=7' },
-  { id: '6', naziv: 'Zlatibor', region: 'Zapad', cena: 200, trajanje: 7, slika: 'https://picsum.photos/280/180?random=7' },
-  { id: '7', naziv: 'Kragujevac', region: 'Sumadija', cena: 60, trajanje: 2, slika: 'https://picsum.photos/280/180?random=7' },
-  { id: '8', naziv: 'Sombor', region: 'Vojvodina', cena: 100, trajanje: 3, slika: 'https://picsum.photos/280/180?random=7' },
-  { id: '9', naziv: 'Uvac', region: 'Zapad', cena: 35, trajanje: 2, slika: 'https://picsum.photos/280/180?random=7' },
-  { id: '10', naziv: 'Djerdap', region: 'Istok', cena: 30, trajanje: 2, slika: 'https://picsum.photos/280/180?random=7' },
-  { id: '11', naziv: 'Oplenac', region: 'Sumadija', cena: 20, trajanje: 1, slika: 'https://picsum.photos/280/180?random=7' }
-
-];
 
 const Explore: React.FC = () => {
   const [searchTekst, setSearchTekst] = useState<string>('');
