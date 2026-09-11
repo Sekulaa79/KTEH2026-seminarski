@@ -7,7 +7,9 @@ import { IDestination } from '../models/Destination';
 const mockDestinacije: IDestination[] = [
   { id: '1', naziv: 'Vojvodina', slika: 'https://picsum.photos/200/300' },
   { id: '2', naziv: 'Zapad', slika: 'https://picsum.photos/200/300' },
-  { id: '3', naziv: 'Sumadija', slika: 'https://picsum.photos/200/300' }
+  { id: '3', naziv: 'Sumadija', slika: 'https://picsum.photos/200/300' },
+  { id: '4', naziv: 'Kosovo', slika: 'https://picsum.photos/200/300' },
+  { id: '5', naziv: 'Istok', slika: 'https://picsum.photos/200/300' }
 ];
 
 const Home: React.FC = () => {
@@ -29,11 +31,19 @@ const Home: React.FC = () => {
         GDE ZELITE ICI
       </h2>
 
-      <div style={{ display: 'flex', justifyContent: 'center', gap: '30px', marginTop: '40px', flexWrap: 'wrap' }}>
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        gap: '30px', 
+        flexWrap: 'wrap',
+        maxWidth: '950px', /* Ograničava širinu tako da stanu tačno 3 u prvi red */
+        margin: '40px auto 0' /* Centrira ceo kontejner na sredinu ekrana */
+      }}>
         {mockDestinacije.map(dest => (
           <DestinationCard key={dest.id} destination={dest} />
         ))}
       </div>
+      
     </div>
   );
 };
