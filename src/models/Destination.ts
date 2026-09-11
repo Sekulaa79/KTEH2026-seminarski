@@ -4,6 +4,8 @@ export interface IDestination {
   slika: string;
   datum?: string; 
   region?: string;
+  cena?: number;     
+  trajanje?: number; 
 }
 
 export class TripManager {
