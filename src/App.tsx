@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
+import { AppProvider } from './context/AppContext';
 import Home from './pages/Home';
 import Explore from './pages/Explore';
 import DestinationDetails from './pages/DestinationDetails';
@@ -12,6 +13,7 @@ import Login from './pages/Login';
 
 const App: React.FC = () => {
   return (
+    <AppProvider>
     <Router>
       <Navbar />
       <Routes>
@@ -22,6 +24,8 @@ const App: React.FC = () => {
         <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
+    </AppProvider>
+
   );
 };
 

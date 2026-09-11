@@ -41,7 +41,7 @@ const Explore: React.FC = () => {
         <h2 style={{ fontFamily: 'serif', borderBottom: '2px solid #2d6a4f', paddingBottom: '5px' }}>Filteri</h2>
         
         <CustomInput 
-          placeholder="Region (npr. Kosovo)" 
+          placeholder="Region" 
           value={searchTekst}
           onChange={(e) => setSearchTekst(e.target.value)}
         />
@@ -57,7 +57,7 @@ const Explore: React.FC = () => {
         flexGrow: 1,
         alignItems: 'flex-start' /* OVO SPRECAVA RAZVLACENJE */
       }}>
-        
+
         {currentItems.map(dest => (
           <DestinationCard key={dest.id} destination={dest} />
         ))}
