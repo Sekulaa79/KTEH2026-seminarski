@@ -3,6 +3,7 @@ export interface IDestination {
   naziv: string;
   slika: string;
   datum?: string; 
+  region?: string;
 }
 
 export class TripManager {
