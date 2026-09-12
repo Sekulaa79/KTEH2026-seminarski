@@ -5,16 +5,25 @@ import './DestinationCard.css';
 
 interface Props {
   destination: IDestination;
+  customOnClick?: () => void;
 }
 
-const DestinationCard: React.FC<Props> = ({ destination }) => {
+const DestinationCard: React.FC<Props> = ({ destination, customOnClick }) => {
   const navigate = useNavigate(); // Hook za navigaciju
+
+  const handleClick = () => {
+    if (customOnClick) {
+      customOnClick(); // Ako postoji custom funkcija, pokreni nju
+    } else {
+      navigate(`/putuj/${destination.id}`); // Inace idi na detalje
+    }
+  };
 
   return (
     // Dodat onClick i kursor pokazivac
     <div 
       className="destination-card" 
-      onClick={() => navigate(`/putuj/${destination.id}`)}
+     onClick={handleClick}
       style={{ cursor: 'pointer' }}
     >
       <img src={destination.slika} alt={destination.naziv} className="card-image" />

@@ -1,5 +1,6 @@
 // src/pages/Home.tsx
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import DestinationCard from '../components/DestinationCard';
 import { IDestination } from '../models/Destination';
 
@@ -13,6 +14,7 @@ const mockDestinacije: IDestination[] = [
 ];
 
 const Home: React.FC = () => {
+  const navigate = useNavigate(); 
   return (
     <div style={{ padding: '40px', textAlign: 'center' }}>
       <h1 style={{ fontFamily: 'serif', marginBottom: '10px' }}>NAS SAJT NAJBOLJI ZA PUT</h1>
@@ -40,7 +42,8 @@ const Home: React.FC = () => {
         margin: '40px auto 0' /* Centrira ceo kontejner na sredinu ekrana */
       }}>
         {mockDestinacije.map(dest => (
-          <DestinationCard key={dest.id} destination={dest} />
+          <DestinationCard key={dest.id} destination={dest} 
+          customOnClick={() => navigate('/putuj', { state: { prosledjeniRegion: dest.naziv } })}/>
         ))}
       </div>
       

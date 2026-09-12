@@ -1,5 +1,6 @@
 // src/pages/Explore.tsx
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { sveDestinacije } from '../data/mockData';
 import CustomInput from '../components/CustomInput';
 import DestinationCard from '../components/DestinationCard';
@@ -7,7 +8,11 @@ import { IDestination } from '../models/Destination';
 
 
 const Explore: React.FC = () => {
-  const [searchTekst, setSearchTekst] = useState<string>('');
+  const location = useLocation(); // DODATO
+  // Citamo prosledjeni region, ako ne postoji stavljamo prazan string
+  const pocetniRegion = location.state?.prosledjeniRegion || '';
+
+  const [searchTekst, setSearchTekst] = useState<string>(pocetniRegion);
   const [searchCena, setSearchCena] = useState<string>('');
   const [searchTrajanje, setSearchTrajanje] = useState<string>('');
   
