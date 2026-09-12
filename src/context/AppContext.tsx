@@ -20,8 +20,16 @@ export const AppProvider: React.FC<{children: ReactNode}> = ({ children }) => {
   const [mojPut, setMojPut] = useState<IDestination[]>(tripManager.getTrips());
 
   const dodajUPut = (destinacija: IDestination) => {
+    // Provera da li destinacija sa ovim ID-jem već postoji u nizu
+    const vecDodato = mojPut.some(dest => dest.id === destinacija.id);
+
+    if (vecDodato) {
+      alert(`Destinacija "${destinacija.naziv}" je već u vašem putu!`);
+      return; // Prekida izvršavanje funkcije, sprečava dodavanje
+    }
+
     tripManager.addTrip(destinacija);
-    setMojPut([...tripManager.getTrips()]); // Ažuriramo React state
+    setMojPut([...tripManager.getTrips()]);
     alert(`Uspešno dodato: ${destinacija.naziv}`);
   };
 
