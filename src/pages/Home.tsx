@@ -1,16 +1,20 @@
-// src/pages/Home.tsx
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import DestinationCard from '../components/DestinationCard';
 import { IDestination } from '../models/Destination';
+import slikaVojvodina from '../images/subotica.jpg'; 
+import slikaZapad from '../images/uvac.jpg';
+import slikaSumadija from '../images/sumadija.jpg';
+import slikaKosovo from '../images/prizrenpravi.jpg';
+import slikaIstok from '../images/djerdap.jpg';
 
-// Koristimo prave slike umesto placeholdera da bi lepše izgledalo
+
 const mockDestinacije: IDestination[] = [
-  { id: '1', naziv: 'Vojvodina', slika: 'https://picsum.photos/200/300' },
-  { id: '2', naziv: 'Zapad', slika: 'https://picsum.photos/200/300' },
-  { id: '3', naziv: 'Sumadija', slika: 'https://picsum.photos/200/300' },
-  { id: '4', naziv: 'Kosovo', slika: 'https://picsum.photos/200/300' },
-  { id: '5', naziv: 'Istok', slika: 'https://picsum.photos/200/300' }
+  { id: '1', naziv: 'Vojvodina', slika: slikaVojvodina },
+  { id: '2', naziv: 'Zapad', slika: slikaZapad },
+  { id: '3', naziv: 'Sumadija', slika: slikaSumadija },
+  { id: '4', naziv: 'Kosovo', slika: slikaKosovo },
+  { id: '5', naziv: 'Istok', slika: slikaIstok }
 ];
 
 const Home: React.FC = () => {

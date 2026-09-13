@@ -4,6 +4,7 @@ import CustomInput from '../components/CustomInput';
 import CustomButton from '../components/CustomButton';
 import { AppContext } from '../context/AppContext';
 import { AuthService } from '../models/User';
+import authSlika from '../images/zlatibor.jpg';
 
 interface Props {
   isRegister?: boolean;
@@ -43,7 +44,7 @@ const Auth: React.FC<Props> = ({ isRegister }) => {
   return (
     <div style={{ display: 'flex', height: '89.5vh', overflow: 'hidden' }}>
       <div style={{ flex: 1, backgroundColor: '#e8efe9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <img src="https://picsum.photos/600/800?random=10" alt="Priroda" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+        <img src={authSlika} alt="Priroda" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       </div>
 
       <div style={{ flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '20px' }}>
