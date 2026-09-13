@@ -24,7 +24,10 @@ const Home: React.FC = () => {
       
       {/* Dodat div oko dugmeta da forsira novi red */}
       <div style={{ marginBottom: '50px' }}>
-        <button style={{ backgroundColor: '#2d6a4f', color: 'white', padding: '12px 30px', border: 'none', borderRadius: '25px', fontWeight: 'bold', cursor: 'pointer' }}>
+        <button 
+          onClick={() => navigate('/login')} /* DODATO OVDJE */
+          style={{ backgroundColor: '#2d6a4f', color: 'white', padding: '12px 30px', border: 'none', borderRadius: '25px', fontWeight: 'bold', cursor: 'pointer' }}
+        >
           PRIJAVI SE
         </button>
       </div>
