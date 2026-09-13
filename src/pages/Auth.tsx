@@ -41,7 +41,7 @@ const Auth: React.FC<Props> = ({ isRegister }) => {
   };
 
   return (
-    <div style={{ display: 'flex', minHeight: '80vh' }}>
+    <div style={{ display: 'flex', height: '89.5vh', overflow: 'hidden' }}>
       <div style={{ flex: 1, backgroundColor: '#e8efe9', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <img src="https://picsum.photos/600/800?random=10" alt="Priroda" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
       </div>
