@@ -8,7 +8,7 @@ import Home from './pages/Home';
 import Explore from './pages/Explore';
 import DestinationDetails from './pages/DestinationDetails';
 import MyTrip from './pages/MyTrip';
-import Login from './pages/Login';
+import Auth from './pages/Auth';
 
 
 const App: React.FC = () => {
@@ -21,7 +21,8 @@ const App: React.FC = () => {
         <Route path="/putuj" element={<Explore />} />
         <Route path="/putuj/:id" element={<DestinationDetails />} /> 
         <Route path="/moj-put" element={<MyTrip />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Auth isRegister={false} />} />
+        <Route path="/registracija" element={<Auth isRegister={true} />} />
       </Routes>
     </Router>
     </AppProvider>
