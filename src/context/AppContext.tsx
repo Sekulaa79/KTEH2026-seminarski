@@ -2,7 +2,6 @@ import React, { createContext, useState, ReactNode } from 'react';
 import { IDestination, TripManager } from '../models/Destination';
 import { IUser, AuthService } from '../models/User';
 
-// Definišemo šta naš Context sadrži
 interface AppContextType {
   mojPut: IDestination[];
   dodajUPut: (destinacija: IDestination) => void;
@@ -10,7 +9,6 @@ interface AppContextType {
   postaviKorisnika: (user: IUser | null) => void;
 }
 
-// Inicijalizujemo Context
 export const AppContext = createContext<AppContextType>({
   mojPut: [],
   dodajUPut: () => {},
@@ -18,26 +16,24 @@ export const AppContext = createContext<AppContextType>({
   postaviKorisnika: () => {}
 });
 
-// Instanciramo klasu
 const tripManager = new TripManager();
-const authService = new AuthService(); // Inicijalizujemo drugu klasu
+const authService = new AuthService();  
 
 export const AppProvider: React.FC<{children: ReactNode}> = ({ children }) => {
   const [mojPut, setMojPut] = useState<IDestination[]>(tripManager.getTrips());
-  // Prilikom ucitavanja aplikacije, proveravamo da li u memoriji vec postoji korisnik
   const [korisnik, setKorisnik] = useState<IUser | null>(authService.getCurrentUser());
-
+  
   const dodajUPut = (destinacija: IDestination) => {
     if (!korisnik) {
       alert("Morate se prijaviti da biste dodali putovanje!");
       return;
     }
-    // Provera da li destinacija sa ovim ID-jem već postoji u nizu
+    
     const vecDodato = mojPut.some(dest => dest.id === destinacija.id);
 
     if (vecDodato) {
       alert(`Destinacija "${destinacija.naziv}" je već u vašem putu!`);
-      return; // Prekida izvršavanje funkcije, sprečava dodavanje
+      return; 
     }
 
     tripManager.addTrip(destinacija);

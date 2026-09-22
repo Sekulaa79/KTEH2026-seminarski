@@ -26,10 +26,10 @@ const Home: React.FC = () => {
         NAS SAJT NAJBOLJI ZA PUT, NAJLAKSE KOD NAS
       </p>
       
-      {/* Dodat div oko dugmeta da forsira novi red */}
+      
       <div style={{ marginBottom: '50px' }}>
         <button 
-          onClick={() => navigate('/login')} /* DODATO OVDJE */
+          onClick={() => navigate('/login')} 
           style={{ backgroundColor: '#2d6a4f', color: 'white', padding: '12px 30px', border: 'none', borderRadius: '25px', fontWeight: 'bold', cursor: 'pointer' }}
         >
           PRIJAVI SE
@@ -45,8 +45,8 @@ const Home: React.FC = () => {
         justifyContent: 'center', 
         gap: '30px', 
         flexWrap: 'wrap',
-        maxWidth: '950px', /* Ograničava širinu tako da stanu tačno 3 u prvi red */
-        margin: '40px auto 0' /* Centrira ceo kontejner na sredinu ekrana */
+        maxWidth: '950px', 
+        margin: '40px auto 0' 
       }}>
         {mockDestinacije.map(dest => (
           <DestinationCard key={dest.id} destination={dest} 
